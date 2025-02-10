@@ -54,7 +54,7 @@ def get_cards_from_deck(deck_name):
 
     return cards_info
 
-
+# TODO :Convert to script with inputs
 # Example usage
 file_path = 'common_words/common_chinese_words'
 deck_name = "newbie_lazy_cn_deck"  # Replace with your deck name
