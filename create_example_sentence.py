@@ -14,7 +14,7 @@ def generate_chinese_sentence(word):
            "pinyin": "",  // Include tone marks (e.g., wánměi)
            "definition": "",  // English definition
            "part_of_speech": "", // Part of speech
-           "example_sentence": "",  // A simple Chinese sentence using the word
+           "example_sentence": "",  // A slightly complicated conversational Chinese sentence using the word
            "example_pinyin": "",  // Pinyin of the example sentence with tone marks
            "example_translation": ""  // English translation of the example sentence
        }}

@@ -23,12 +23,7 @@ def save_json(data, directory):
     with open(f"{directory}/data.json", "w", encoding="utf-8") as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=2)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python create_card_dir.py <word>")
-        sys.exit(1)
-
-    word = sys.argv[1]
+def build_flash_card(word):
     target_dir = create_card_directory(word)
     sentence_data = generate_chinese_sentence(word)
     sentence = sentence_data['example_sentence']
@@ -38,3 +33,11 @@ if __name__ == "__main__":
     sentence_data['sentence_audio_path'] = sentence_file_path
     save_json(sentence_data, target_dir)
     add_anki_card_with_audio(sentence_data)
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python create_card_dir.py <word>")
+        sys.exit(1)
+
+    word = sys.argv[1]
+    build_flash_card(word)

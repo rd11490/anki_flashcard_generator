@@ -174,3 +174,4 @@ secrets.py
 .DS_Store
 .idea/
 cards/
+common_words/
