@@ -61,11 +61,11 @@ def add_anki_card_with_audio(data, deck_name="newbie_lazy_cn_deck", model_name="
                     "Pinyin.1": pinyin,
                     "Meaning": definition,
                     "Part of speech": part_of_speech,
-                    # "Audio": f"[sound:{word}pronunciation.mp3]",  # Reference the audio file here
+                    "Audio": f"[sound:{word}pronunciation.mp3]",  # Reference the audio file here
                     "SentenceSimplified": sentence,
                     "SentencePinyin.1": sentence_pinyin,
                     "SentenceMeaning": sentence_translation,
-                    # "SentenceAudio": f"[sound:{word}example.mp3]",  # Reference the audio file here
+                    "SentenceAudio": f"[sound:{word}example.mp3]",  # Reference the audio file here
                 },
                 "audio": [
                     {
