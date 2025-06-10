@@ -1,5 +1,6 @@
 import os
 import sys
+import argparse
 
 from create_anki_card import add_anki_card_with_audio
 from create_example_sentence import generate_chinese_sentence
@@ -23,7 +24,7 @@ def save_json(data, directory):
     with open(f"{directory}/data.json", "w", encoding="utf-8") as json_file:
         json.dump(data, json_file, ensure_ascii=False, indent=2)
 
-def build_flash_card(word):
+def build_flash_card(word, deck_name):
     target_dir = create_card_directory(word)
     sentence_data = generate_chinese_sentence(word)
     sentence = sentence_data['example_sentence']
@@ -32,12 +33,16 @@ def build_flash_card(word):
     sentence_data['word_audio_path'] = word_file_path
     sentence_data['sentence_audio_path'] = sentence_file_path
     save_json(sentence_data, target_dir)
-    add_anki_card_with_audio(sentence_data)
+    print(add_anki_card_with_audio(sentence_data, deck_name))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python create_card_dir.py <word>")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Create a filtered ANKI deck for targeted study")
+    parser.add_argument("-w", "--word", type=str, required=True, help="Words for flash card")
+    parser.add_argument("-d", "--deck", type=str, required=False, help="Target Deck Name", default="newbie_lazy_cn_deck")
 
-    word = sys.argv[1]
-    build_flash_card(word)
+    args = parser.parse_args()
+    print(args)
+    if args.word is not None:
+        build_flash_card(args.word, args.deck)
+
+

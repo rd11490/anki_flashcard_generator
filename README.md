@@ -6,8 +6,13 @@ This project is currently not generalized to match multiple languages, decks, et
 
 
 #### To Create New Cards
+| Argument | Short Form | Description                  | Required |
+|----------|------------|------------------------------|----------|
+| `--deck` | `-d`       | Name of the destination deck | ❌        |
+| `--word` | `-w`       | Word to create flashcard for | ✅        |
+
 ```commandline
-python build_flashcard.py 李子
+python build_flashcard.py -w 李子 -d targeted_study
 ```
 
 #### Process:

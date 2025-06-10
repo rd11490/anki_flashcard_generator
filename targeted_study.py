@@ -83,22 +83,24 @@ def create_filtered_deck(deck_name):
 def parse_words(words):
     return words.split(',')
 
-parser = argparse.ArgumentParser(description="Create a filtered ANKI deck for targeted study")
-parser.add_argument("-w", "--words", type=str, required=False, help="Words to study")
-parser.add_argument("-d", "--deck", type=str, required=True, help="Target Deck Name")
-parser.add_argument("-r", "--reset", action="store_true", help="Reset Target Deck")
-parser.add_argument("-s", "--source-deck", type=str, required=False, help="Source Deck")
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description="Create a filtered ANKI deck for targeted study")
+    parser.add_argument("-w", "--words", type=str, required=False, help="Words to study")
+    parser.add_argument("-d", "--deck", type=str, required=True, help="Target Deck Name")
+    parser.add_argument("-r", "--reset", action="store_true", help="Reset Target Deck")
+    parser.add_argument("-s", "--source-deck", type=str, required=False, help="Source Deck")
 
 
-args = parser.parse_args()
-print(args)
-if args.words is not None:
-    words = parse_words(args.words)
-    matching_card_ids = find_cards_by_simplified(words)
-    create_filtered_deck(args.deck)
-    move_cards(args.deck, matching_card_ids)
+    args = parser.parse_args()
+    print(args)
+    if args.words is not None:
+        words = parse_words(args.words)
+        matching_card_ids = find_cards_by_simplified(words)
+        create_filtered_deck(args.deck)
+        move_cards(args.deck, matching_card_ids)
 
-if args.reset:
-    cards = get_all_cards_in_deck(args.source_deck)
-    move_cards(args.deck, cards)
-    delete_deck(args.source_deck)
+    if args.reset:
+        cards = get_all_cards_in_deck(args.source_deck)
+        move_cards(args.deck, cards)
+        delete_deck(args.source_deck)
