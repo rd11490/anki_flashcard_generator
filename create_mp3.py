@@ -1,6 +1,6 @@
 from google.cloud import texttospeech
 from google.oauth2 import service_account
-from secrets import google_tts_key_location
+from app_secrets import google_tts_key_location
 
 def create_mp3(text, location, file_name):
 

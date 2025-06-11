@@ -1,5 +1,5 @@
 import openai
-from secrets import chat_gpt_key
+from app_secrets import chat_gpt_key
 from openai import OpenAI
 import json
 
@@ -33,7 +33,6 @@ def generate_chinese_sentence(word):
     )
 
     jsn = json.loads(response.model_dump_json())
-    print(jsn)
     chat_resp = jsn['choices'][0]['message']['content']
     result = json.loads(chat_resp)
     return result

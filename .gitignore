@@ -176,3 +176,5 @@ secrets.py
 cards/
 common_words/
 stories/
+lazy_cn_videos/
+app_secrets.py
